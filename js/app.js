@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js';
 import {World} from "./objects/world";
-import {Laser} from "./objects/laser";
 
 // Загружаем стили. Импортируем, для того чтобы webpack сам с ними разоборался
 import '../styles/index.css'
@@ -9,7 +8,7 @@ import '../styles/index.css'
 const ratio = window.devicePixelRatio;
 
 // Создаём наш мир
-var world = new World();
+const world = new World();
 
 // Берём размеры экрана
 //let logicalWidth = window.innerWidth;
@@ -54,6 +53,10 @@ document.addEventListener('keyup', (ev) => {
     keys[ev.key] = false;
 }, false);
 
+setInterval(()=>{
+    world.spawn();
+},1000);
+
 document.addEventListener('click', (ev) => {
     world.click(ev.x, ev.y);// ToDo: Вызывать метод click у World
 }, false);
@@ -66,13 +69,13 @@ function setcanvassize ()  {
     canvas.height = window.innerHeight * 2;
     canvas.style.width = window.innerWidth  + 'px';
     canvas.style.height = window.innerHeight + 'px';
-    renderer.resize(window.innerWidth, window.innerHeight)
+    renderer.resize(window.innerWidth, window.innerHeight);
     world.player.x = 15;
     world.player.y = 15;
 }
 window.onresize = (ev) => {
     setcanvassize();
-}
+};
 // Начинаем рисовать!
 animate();
 
