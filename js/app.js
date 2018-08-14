@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import {World} from "./objects/world";
+import {Laser} from "./objects/laser";
 
 // Загружаем стили. Импортируем, для того чтобы webpack сам с ними разоборался
 import '../styles/index.css'
@@ -17,7 +18,7 @@ var world = new World();
 // http://pixijs.download/dev/docs/PIXI.Application.html
 let renderer = PIXI.autoDetectRenderer(
     window.innerWidth,
-    window.nnerHeight,
+    window.innerHeight,
     {backgroundColor: 0x00000, resolution: 2});
 
 // Нажата ли кнопка
@@ -51,6 +52,10 @@ document.addEventListener('keydown', (ev) => {
 
 document.addEventListener('keyup', (ev) => {
     keys[ev.key] = false;
+}, false);
+
+document.addEventListener('click', (ev) => {
+    world.click(ev.x, ev.y);// ToDo: Вызывать метод click у World
 }, false);
 
 function setcanvassize ()  {
