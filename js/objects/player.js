@@ -22,7 +22,6 @@ export class Player {
     go_left = () => {
         this.x -= 1
     };
-
     go_right = () => {
         this.x += 1
     };

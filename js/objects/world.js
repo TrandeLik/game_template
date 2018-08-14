@@ -5,7 +5,7 @@ import {Info} from "./info"
 export class World {
     constructor() {
         // Создадим игрока
-        this.player = new Player(0, 0)
+        this.player = new Player(15, 15)
     }
 
     // В зависисмости от нажатых клавиш изменяем среду
@@ -17,16 +17,16 @@ export class World {
                 // Взависимости от того какая кнопка
                 switch (key) {
                     case "a":
-                        this.player.go_left();
+                        this.player.x - 1 >= this.player.r ? this.player.go_left() :null;
                         break;
                     case "d":
-                        this.player.go_right();
+                        this.player.x + 1 <= window.innerWidth - this.player.r ? this.player.go_right() :null;
                         break;
                     case "s":
-                        this.player.go_down();
+                        this.player.y + 1 <= window.innerHeight - this.player.r ? this.player.go_down() :null;
                         break;
                     case "w":
-                        this.player.go_up();
+                        this.player.y - 1 >= this.player.r ? this.player.go_up() :null;
                         break;
                 }
             }
