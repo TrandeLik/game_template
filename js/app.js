@@ -55,7 +55,7 @@ document.addEventListener('keyup', (ev) => {
 
 setInterval(()=>{
     world.spawn();
-},1000);
+},2000);
 
 document.addEventListener('click', (ev) => {
     world.click(ev.x, ev.y);// ToDo: Вызывать метод click у World

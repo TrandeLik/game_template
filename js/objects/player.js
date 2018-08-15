@@ -6,6 +6,7 @@ export class Player {
         this.x = x;
         this.y = y;
         this.r = 10;
+        this.live = 10;
     }
 
     draw() {
@@ -20,17 +21,17 @@ export class Player {
     }
 
     go_left = () => {
-        this.x -= 1
+        this.x -= 2
     };
     go_right = () => {
-        this.x += 1
+        this.x += 2
     };
 
     go_up = () => {
-        this.y -= 1
+        this.y -= 2
     };
 
     go_down = () => {
-        this.y += 1
+        this.y += 2
     }
 }

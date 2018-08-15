@@ -5,15 +5,18 @@ export class Laser {
         this.cur_x = cur_x;
         this.cur_y = cur_y;
         this.r = 5;
+        this.V0 = 5;
         this.dist_x = dist_x;
         this.dist_y = dist_y;
         this.k = (this.dist_y - this.cur_y) / (this.dist_x - this.cur_x);
         this.b = this.cur_y - this.cur_x * this.k;
+        this.Vx = this.V0*(Math.cos(Math.atan(this.k)));
+        this.Vy = this.V0*(Math.sin(Math.atan(this.k)));
     }
 
     rasch () {// ToDo: Сделать метод, который вычисляет новый x и y
 
-      this.dist_x >= this.cur_x ? this.cur_x = this.cur_x + 1 :this.cur_x = this.cur_x - 1;
+      this.dist_x >= this.cur_x ? this.cur_x = this.cur_x + this.Vx :this.cur_x = this.cur_x - this.Vx;
       this.cur_y = this.k * this.cur_x + this.b;
     }
     draw() {
